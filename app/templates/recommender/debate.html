@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class = container>
+        <div class =row>
+            {% for movie in first_three %}
+                <div class = col-md-4>
+                    <img src= "{{ url_for('static', filename = movie.poster ) }} " style="max-width:50%" >
+                    <h2>{{movie.title}}</h2>
+                    {% for explanation in movie.explanations %}
+                    <p>{{explanation.explanation}}</p>
+                    {% endfor %}
+
+                    
+                    
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <div class =row>
+            {% for movie in second_three %}
+                <div class = col-md-4>
+                    <img src= "{{ url_for('static', filename = movie.poster ) }} " style="max-width:50%" >
+
+                    <h2>{{movie.title}}</h2>
+                    {% for explanation in movie.explanations %}
+                    <p>{{explanation.explanation}}</p>
+                    {% endfor %}
+                    
+                    
+                    
+                    
+
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ wtf.quick_form(form) }}
+
+{% endblock %}
+

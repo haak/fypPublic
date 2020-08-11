@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for movie in movies %}
+    <div class="col-md-4 themed-grid-col">
+        <p> Title: {{movie.movie.Title}}</p>
+
+        <p> Year: {{movie.movie.Year}}</p>
+        <p> Rated: {{movie.movie.Rated}}</p>
+        <p> Plot: {{movie.movie.Plot}}</p>
+
+        <img src= "{{ url_for('static', filename = movie.poster ) }} ">
+
+
+            {% for recommendation in movie.recommendation %}
+                <p>{{recommendation}} </p>
+
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock %}

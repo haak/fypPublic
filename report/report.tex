@@ -1,0 +1,195 @@
+\documentclass[12pt]{report}
+\usepackage{extsizes}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{listings}
+
+\lstset{language=Python,
+    % basicstyle=\scriptsize\ttfamily,
+    % commentstyle=\ttfamily\itshape\color{gray},
+    % stringstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ffff,
+    frame=single,
+    % rulecolor=\color{black},
+    xleftmargin=\dimexpr\fboxsep-\fboxrule,
+    xrightmargin=\dimexpr\fboxsep-\fboxrule,
+    gobble=8
+}
+
+\usepackage{verbatim}
+\usepackage{float}
+%Header and Footer Stuff
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\assignpagestyle{\chapter}{fancy}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage }
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+% \linespread{1.5}
+
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+
+% \usepackage{xr}
+\usepackage{xr-hyper}
+    \usepackage{hyperref}
+    \externaldocument[chap01-]{sections/chapter01}
+    \externaldocument[chap02-]{sections/chapter02}
+    \externaldocument[chap03-]{sections/chapter03}
+    \externaldocument[chap04-]{sections/chapter04}
+    \externaldocument[chap05-]{sections/chapter05}
+    
+
+
+\title{Recommendation as a Balloon Debate}
+\author{Harry Alexander Kelleher}
+\date{April 2020}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\begin{titlepage}
+    \begin{center}
+        
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Recommendation as a Balloon Debate}
+        
+            
+        \
+        
+            
+        \vspace{2cm}
+            
+        \textbf{Harry Alexander Kelleher}
+            
+        \vfill
+            
+        Final Year Project\\
+        BSc Computer Science\\
+        Dr. Derek Bridge
+            
+        \vspace{0.8cm}
+            
+        
+        \Large
+        April 2020
+    \end{center}
+\end{titlepage}
+
+
+\chapter*{Abstract}
+    \addcontentsline{toc}{chapter}{Abstract}
+    
+
+    You are trying to decide which of the movies at your local cineplex to go and see. A recommender system can help you. In this project a Balloon debate recommender was created.  In a normal Balloon debate, a small number of speakers pretend to be famous people who are overloading the basket of a hot-air balloon. Someone must be thrown overboard. Each speaker gives reasons why they should be saved. An audience must decide who to sacrifice. 
+
+    A set of movies compete against each other to see which one the cinema patron will pick. The movies can either be selected from current movies or movies the patron’s neighbours like. At the start of the debate, each movie explains why the movie should be kept. The patron then removes a movie based on the given explanations. In the next round, each movie gives a new explanation. This continues until a single movie is left standing. We have demonstrated refinement of choice using this methodology. 
+
+
+\chapter*{Declaration of Originality}
+        \addcontentsline{toc}{chapter}{Declaration of Originality}
+        In signing this declaration, you are confirming, in writing, that the submitted work
+        is entirely your own original work, except where clearly attributed otherwise, and
+        that it has not been submitted partly or wholly for any other educational award. I
+        hereby declare that:
+        \begin{itemize}
+            \item this is all my own work, unless clearly indicated otherwise, with full and proper accreditation;  
+            \item with respect to my own work: none of it has been submitted at any educational institution contributing in any way to an educational award;
+            \item with respect to another’s work: all text, diagrams, code, or ideas, whether verbatim, paraphrased or otherwise modified or adapted, 
+            have been duly attributed to the source in a scholarly manner, whether from books, papers, lecture notes or any other student’s work, whether
+            published or unpublished, electronically or in print.
+        \end{itemize}
+        \vspace{10mm}
+        Signed: \dotfill Harry Alexander Kelleher \dotfill
+        \\\\
+        Date: \dotfill 17th April 2020 \dotfill
+
+
+\chapter*{Acknowledgements}
+    \addcontentsline{toc}{chapter}{Acknowledgements}
+    I would like to thank Derek Bridge for all the help he has given during the project and giving me the chance to work on this project. He has been of tremendous help. I would like to thank my family for helping and providing support throughout this project. I would also like to thank all of the people who helped with beta testing the application and helped in user testing. 
+   
+
+
+\tableofcontents
+    \thispagestyle{empty}
+    
+
+\listoffigures  
+    \thispagestyle{empty}
+    \addcontentsline{toc}{chapter}{List of Figures}
+
+\lstlistoflistings
+    \thispagestyle{empty}
+    \addcontentsline{toc}{chapter}{List of Listings}
+
+
+\include{sections/chapter01}
+\include{sections/chapter02} 
+\include{sections/chapter03}   
+\include{sections/chapter04}
+\include{sections/chapter05}
+
+\appendix
+\chapter{Generating Neighbours}
+
+    \begin{lstlisting}[gobble=16,  tabsize=4,caption=Code used to retrieve the neighbours for a user. ,label=fig:FindingNeighboursPearsonMethod]
+
+        def pearson_neighbours_by_number(user_id, number=50):
+            ranked_neighbours = []
+            conn, c = get_db()
+            neighbours_list_good = []
+            neighbours = find_neighbours_SQL(user_id)
+            for neighbour in neighbours:
+                user_list = []
+                neighbour_list = []
+                c.execute(common_ratings_for_neighbours, (user_id, neighbour))
+                rating_set = c.fetchall()
+                for rating in rating_set:
+                    user_list.append(rating[0])
+                    neighbour_list.append(rating[1])
+                if len(neighbour_list) > 2:
+                    corr, _ = pearsonr(user_list, neighbour_list)
+                    ranked_neighbours.append((corr, user_id, neighbour))
+            ranked_neighbours.sort(key=lambda tup: tup[0], reverse=True)
+            for i in range(len(ranked_neighbours)):
+                tmp_tuple = (ranked_neighbours[i][2], ranked_neighbours[i][0])
+                neighbours_list_good.append(tmp_tuple)
+            if len(neighbours_list_good) > number:
+                return neighbours_list_good[:number]
+            return ranked_neighbours
+
+    \end{lstlisting}
+
+\chapter{JSON Response For A Movie }
+    \begin{lstlisting}[gobble=8, tabsize=4,caption=JSON returned from request for Iron Man 2008,label=fig:ironmanjson]
+        {"Title":"Iron Man","Year":"2008","Rated":"PG-13","Released":"02 May 2008",
+        "Runtime":"126 min","Genre":"Action, Adventure, Sci-Fi","Director":"Jon Favreau",
+        "Writer":"Mark Fergus (screenplay), Hawk Ostby (screenplay), Art Marcum (screenplay), 
+        Matt Holloway (screenplay), Stan Lee (characters), Don Heck (characters), Larry Lieber 
+        (characters), Jack Kirby (characters)","Actors":"Robert Downey Jr., Terrence Howard, 
+        Jeff Bridges, Gwyneth Paltrow","Plot":"After being held captive in an Afghan cave, 
+        billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight 
+        evil.","Language":"Hungarian, Kurdish, Hindi, English, Persian, Urdu, Arabic",
+        "Country":"USA","Awards":"Nominated for 2 Oscars. Another 21 wins & 65 nominations.",
+        "Poster":"https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
+        "Ratings":[{"Source":"Internet Movie Database","Value":"7.9/10"},{"Source":"Rotten Tomatoes",
+        "Value":"94%"},{"Source":"Metacritic","Value":"79/100"}],"Metascore":"79","imdbRating":"7.9",
+        "imdbVotes":"904,648","imdbID":"tt0371746","Type":"movie","DVD":"30 Sep 2008","BoxOffice":
+        "$318,298,180","Production":"Paramount Pictures","Website":"N/A","Response":"True"}                
+    \end{lstlisting}
+
+\bibliography{report} 
+\bibliographystyle{ieeetr}
+\end{document}

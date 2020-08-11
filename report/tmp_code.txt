@@ -1,0 +1,180 @@
++def recommend_movie(user_id, movie_id_in):
+     for movie in movie_id_in:
+         # query = "select * from actor_to_movies where movie_id=:x ", {"x": str(movie.movie_id)}
+         # print(query)
+         # print(movie.movie_id)
+-        c.execute("select imdb_id from movie_id_to_imdb_id where movie_id=:x ", {"x": str(movie.movie_id)})
+-        movie_id = c.fetchone()
+-        movie_id_2 = "tt0" + str(movie_id[0])
++        # c.execute("select imdb_id from movie_id_to_imdb_id where movie_id=:x ", {"x": str(movie.movie_id)})
++        # movie_id = c.fetchone()
++        # movie_id_2 = "tt0" + str(movie_id[0])
+         # "SELECT  * FROM actor_to_movies where movie_id = "nm0293815""
+         # print(movie_id)
+         # the line below is WRONG. my actor to movie table is the wrong way around.
+-        c.execute("select movie_id from actor_to_movies where actor_id=:x ", {"x": movie_id_2})
+-        actors = c.fetchall()
++        # c.execute("select movie_id from actor_to_movies where actor_id=:x ", {"x": movie_id_2})
++        # actors = c.fetchall()
+         # print("actors for movies we have selected")
+         # print(actors)
+         # print("is this working")
+         # testing sql joins.
+         # c.execute("select movie_id from actor_to_movies JOIN user_to_actor where actor_id=:x ", {"x": movie_id_2})
++        # for actor in actors:
++        # print("printing actors")
++        # print(actor)
++        # c.execute("select actor_id from user_to_actor where actor_id=:x and user_id=:y",
++        #           {"x": str(actor[0]), "y": user_id})
++        # for common_actor in c.fetchall():
++            # print(common_actor)
++            # c.execute("select name from actors where actor_id=:x ", {"x": str(common_actor[0])})
++            # name = c.fetchone()
++            # print(str(movie) + " has " + name[0] + " and rating " + str(movie.rating))
++            # break
++        # query_for_actors = "select * from user_to_actor where actor_id=:x", {"x": actor}
++        actors = actors_in_movie(movie.id, user_id)
+#           print("printing actors")
+-            # print(actor)
+-            c.execute("select actor_id from user_to_actor where actor_id=:x and user_id=:y", {"x": str(actor[0]),"y":user_id})
+-            for common_actor in c.fetchall():
+-                # print(common_actor)
+-                c.execute("select name from actors where actor_id=:x ", {"x": str(common_actor[0])})
+-                name = c.fetchone()
+-                print(str(movie) + " has " + name[0] + " and rating " + str(movie.rating))
+-                break
+-            # query_for_actors = "select * from user_to_actor where actor_id=:x", {"x": actor}
+-
++            print(str(movie) + " has " + actor[2] + " and rating " + str(movie.rating))
+         if movie.rating > 2.5:
+-            print(str(movie.name)  + " has rating " + str(movie.rating))
++            print(str(movie.name) + " has rating " + str(movie.rating))
+     list_of_actors = []
+     # session.query(User_to_Movie).filter_by(movie_id=movie_id_in).first()
+
+
+
+
+
+
+
+
+
+
+
++def move_actors_to_objects():
++    query = "SELECT actor_id from actor"
++    query2 = "SELECT MAX(object_id) FROM objects_info"
++    query3 = "INSERT INTO objects_info (object_id,type) values (?,?)"
++    query4 = "UPDATE actor SET object_id = ? WHERE actor_id = ?"
++    c.execute(query2)
++    id_number = c.fetchone()
++    print(id_number)
++    id_number = 0
++    c.execute(query)
++    for actor in c.fetchall():
++        actor_id = actor[0]
++        print(actor_id)
++        c.execute(query3, (id_number, "actor"))
++        c.execute(query4, (id_number, actor_id))
++        id_number += 1
++        conn.commit()
++    return
++
+
+
+
++def scrape_omdb():
++    scraped_movies = []
++    movies_to_scrape = list_of_imdb_ids()
++    for movie in movies_to_scrape:
++        response = json_for_movie(movie)
++        title = response['title']
++        year = response["year"]
++        rated = response["rated"]
++        released = response["released"]
++        runtime = response["runtime"]
++        genre = response["genre"]
++        director = response["director"]
++        writers = response["writer"]
++        actors = response["actors"]
++        plot = response["plot"]
++        languages = response["language"]
++        country = response["country"]
++        awards = response["awards"]
++        poster_link = response["poster"]
++        imdb_id = movie[0]
++        production = response["production"]
++        imdb_votes_str = response["imdb_votes"]
++        imdb_votes = int(imdb_votes_str.replace(',', ''))
++        scraped_movies.append(movie)
++        return
+
+
+
++def compare_movie(imdb_id,user_id):
++    query = """SELECT t2.movie_id, t1.type,t1.object_id, COUNT(*) FROM ((SELECT movie_id,type,object_id FROM movie_to_objects WHERE movie_id == ?)t1
++        LEFT JOIN
++        (SELECT movie_id, type, object_id FROM movie_to_objects  GROUP BY object_id, type , movie_id  ) t2 on t1.object_id = t2.object_id AND t1.type = t2.type) GROUP BY t1.object_id,t1.type;
++        """
++
++    query2 = """SELECT  t1.type,t1.object_id , COUNT(*)FROM (
++    (SELECT movie_id,type,object_id FROM movie_to_objects WHERE movie_id == ?) t1
++    LEFT JOIN
++    (SELECT movie_id, type, object_id FROM movie_to_objects  GROUP BY object_id, type , movie_id HAVING movie_id in (SELECT imdb_id FROM movie_id_to_imdb_id
++    WHERE movie_id in (SELECT movie_id FROM user_to_movie WHERE user_id == ?))
++ ) t2 on t1.object_id = t2.object_id AND t1.type = t2.type) GROUP BY t1.type,t1.object_id ORDER BY t1.type;
++    """
++    c.execute(query2, (imdb_id, user_id))
++    result = c.fetchall()
++    print(result)
++
+
+
+
+CODE TO INCLUDE:
+gen explanation
+
+
+
+Create movies for pearson.
+
+# get top 6 movies to recommend to a user_id
+def get_movies_based_on_pearson(user_id):
+    total = {}
+    similarity_sum = {}
+
+    top_neighbours = pearson_neighbours_by_number(user_id)
+    for neighbour in top_neighbours:
+        neighbour_id = neighbour[0]
+        neighbour_pearson = neighbour[1]
+        neighbour_ratings = get_rating_and_id_for_user(neighbour_id)
+
+        for rating in neighbour_ratings:
+            imdb_id = rating[0]
+            score = rating[1]
+            if score > 0:
+                if imdb_id not in total:
+                    total[imdb_id] = 0
+                    similarity_sum[imdb_id] = 0
+                total[imdb_id] += score * neighbour_pearson
+                similarity_sum[imdb_id] += neighbour_pearson
+    ranking = [(tot/similarity_sum[movieid], movieid) for movieid, tot in total.items()] # noqa
+    ranking.sort(key=operator.itemgetter(0), reverse=True)
+    return ranking[:6]
+
+
+def json_for_movie(imdb_id):
+    response = omdb.imdbid(imdb_id)
+    return response
+
+def import_movie(imdb_id):
+    json_for_movie = omdb.imdbid(imdb_id)
+    response = literal_eval(json_for_movie)
+    movie = response["imdb_id"]
+    for object in response:
+        if check_exists(object):
+            pass 
+        else:
+            create_object_and_insert(object)
+            create_movie_object_link(object,movie)

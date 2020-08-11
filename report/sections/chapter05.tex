@@ -1,0 +1,74 @@
+\chapter{Conclusions \& Future Work} % 3 pages
+    In this chapter we are going to discuss the conclusion reached with the project and we are going to discuss some future work that could be completed given different circumstances. 
+
+    \section{Conclusion}
+        Our goal was to create a system that would facilitate a debate between movies thereby helping a patron to make a movie choice. This was achieved in that movies created explanations that the user found helpful in refining their choice. The results from the questionnaire shown above demonstrate the achievement of this goal. 
+
+    \section{Review of Requirements}
+        As part of designing the system a number of functional and non-functional requirements were laid out before we started work on the project in order to ensure there was a clear structure to the project. These were laid out in section ~\ref{chap02-sec:Requirements}. In this section, we are going to describe what was expected and what was completed. 
+
+
+        \subsection{Function Requirements}
+        \begin{itemize}
+
+            \item The user must be able to search and rate movies to add to their profile.\\
+                Two pages have been created to do this. The first has a list of movies in the system and a user can apply a rating to any of these movies. If they have already rated a movie they can re-rate the movie. On the other page the user can add a movie to the system by its IMDB id tag or its title and add a rating there. 
+            \item The user must be able to take part in user trials which accommodate a number of debates.\\
+            The debate-page was created for a user to take part in the debate created for them. This page shows movie information pulled from the database along with the created explanations. 
+            
+            \item The user must be able to view the movies attached to their profile.\\
+            This was completed as part of the back end of the application but a page was not created to show this to the user. 
+            \item The user must be able to view other users and the movies on their profile. 
+            \end{itemize}
+            A user is able to see other users but they are unable to see the movies in their profile. Like above this can be done but is not shown on the front end. 
+        \subsection{Non-Functional requirements}
+            \begin{itemize}
+            \item The user should be able to view explanations for recommendations.\\
+                In the second system this was done through the use of the show movies page which showed local movies without the debate structure. This just listed each movie from the cinema and then all the explanations created for that page. Then in the third system this was rolled into the debate page. Depending on the round of the debate a number of explanations were shown in addition to the movie information provided. 
+
+            \item There must be a frontend for a user to interact with and there must be a single source where the data is stored.\\
+                As part of the third system a simple web app was created for a user to interact with. This was made up of only a few pages that were necessary for operation. 
+            \item The state of the user testing and the debates should be stored during operation.\\
+                A user's state in the debate and user trials are kept throughout their use of the website. The status can be reset also
+            \item The user must be able to add their own ratings to the system.
+            \item The movies should create explanations for themselves. 
+                \begin{itemize}
+                    \item These may be scored relative to other explanations\\
+                    During the course of the user trials each round has different settings that are turned on and off. On of these settings it the ability to change the scoring function of the explanations between random and a scoring function based on the popularity of the item. This fulfills both requirements.
+                    \item Or they may be scored randomly for serendipity.
+                \end{itemize}
+
+            \item The system must be able to import information about new movies as they come out.\\
+            In the first system, we were only using the current ratings from the Movie Lens dataset. 
+            \item The system should be able to compute the Pearson correlation between movies and users. 
+            \end{itemize}
+
+        As we can see above almost all of the functional and non-functional requirements were satisfied.
+        Before the start of the user trial,s there were a few things we were unable to finish. One was the ability for movies to pick a bad explanation from one movie and use it as their own. We planned for a movie to take an explanation that might have been negative about a movie and use it to dissuade a person from picking the movie. Another was the ability for a user to see movies they had in their profile. The second would require a simple page that finds movies a user has rated from the database and presents them on a page. We already get all the movies they have rated when creating an explanation. This was an overlooked feature what would have been helpful during user trials. The final system was unable to have movies compete against each other using negative explanations for one another but were able to use positive explanations for themselves. This was a planned feature but as time got closer to user testing and with the move to having to implement a system to have users be able to complete the system trials online this was not completed. As all of the explanations that are created are given a score. It would be a fairly simple extension to allow a movie to pick a negatively rated explanation from another movie and use it against the movie the explanation was created for. After completing the user trials and looking back at the original requirements there were a number of things we could work on in the future. This leads us into the next section where will talk about the parts of the project that could be undertaken in the future.
+        
+         
+    
+    \section{Future Work}\label{sec:FutureWorks}
+        As we talking about at the end of the user trials a lot was learned from the responses. In this section, we are going to mention some of the ways the system could be changed to improve the user's experience with the system and to improve the system in general. 
+        
+
+        \subsection{Expandability}
+            During the project, we attempted to make the system as expandable as possible. The system was created to make it easy to add more explanations to it. The same SQL can be used as long as more explanations are added in the same ways as they currently are. Originally all explanations were created from the database of objects but towards the end, we wanted to add in neighbour's ratings for movies. This was easy to implement as we already had a system that would pull explanations for a movie from the database and include it in the debate. To add more we just needed to create new explanations in a different system and add them to the database to be used. 
+            
+            Currently, the movie metadata explanations are one of many types in an enum. These can be expanded upon to create more. Examples of things we would like to include are information about posters like colours of backgrounds and the number of people in the poster. These pieces of information could be added without too much trouble. More novelty explanations could have been added too like one relating to the six degrees of Kevin Bacon. Which is the number of acquaintance links between an actor and Kevin Bacon \cite{SixDegreesOfKevinBacon}. This is a parlor game that people have played with Kevin Bacon and other actors and would create a game with a game aspect. These are just some of the explanations types that could be added in the future. Using explanations that were scored randomly seemed to sometimes give good explanations that people liked. I also think that it would be interesting to include different scoring systems and see how they compare in the future.
+
+        \subsection{Optimisation}
+            After implementing certain parts of the project it became clear that there were better designs for the project but I believe this happens in every project. It's much easier to see what could be improved once it has all been implemented. This project is implemented mostly in Python. Python is generally regarded as a slow language and we could have moved the code that did the intensive processing of the data to a different language that would have been faster. Work could have also been completed to implement measures to optimise the database access for the benefits that SQLite offers. 
+
+        \subsection{General Recommender Problems }
+            As we mentioned in section \ref{sec:RecommenderSystemProblems} problems can arise when creating a recommender system such as the cold start problem When we decided we wanted to create recommendations for movies based on a users profile we encountered the cold start problem as users did not have any movies in their profile to create recommendations from. This could be worked on further by integrating this with other systems to incorporate more than just explicit ratings in the recommender. As this is its own system that requires explicit ratings it hs the same problem that Yang et al and in \cite{10.1145/1555400.1555432} where users are "too lazy to provide ratings". If this was integrated with another system that a user was already using that tracked watch history or movie information the system could be populated with that beforehand. Services such as \cite{TraktTV} or \cite{PlexTV} could be used to collect watch information. 
+
+            
+        \subsection{Testing}
+            We managed to complete our planned user testing during the project but it would have been nice to implement some more complex tests and have users supply more movies into the system before they started testing. It would also have been better to do more varied testing with random people who do not know me which might have changed answers. A bug that was also run into in the user trials was the duplicated creation of explanations for a debate. This only happened once and was not repeated if we had more time it would have been nice to find this bug. This type of bug could be solved by having more testing in the project. Not enough time was spend creating tests for the system. Test-Driven Development is also a popular practice nowadays where tests are created and used before any project code is written. This could have been used and could still be moved to in order to solves this problem quicker in the future. 
+
+        \section{Personal Conclusion}
+            Over the past six months, I have spent working on this project I have learned a great deal. I have learned how to plan a long term solo project and how to continue to work on a project over a long time. This project has lasted 203 days from last September until now. 
+            
+            I took this project as I wanted to learn more about recommender systems an area in which I had no experience with before accepting this project. From  the responses I have heard from users I believe I have completed this task. I believe I am more knowledgeable about the subject after completing the project. It has had its ups and downs but I am proud of the work that I have completed over the past months. I hope to continue to work on the project in some form. 
+            

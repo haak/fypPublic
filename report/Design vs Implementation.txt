@@ -1,0 +1,47 @@
+Design vs Implementation
+
+Design
+
+This section should provide a high-level overview of the “architecture” of
+the system but without any code-level details. 
+
+It should describe the major components of the system, the role that each plays and the interrelationships
+between them.
+
+ It should also describe any tools, technologies or packages or
+libraries that your system depends upon and describe how they fit into the
+overall design. 
+
+Every significant high-level technical decision reflected in the
+design should be justified: the reader should be convinced that the proposed
+design is both reasonable and realizable.
+
+
+In the case of a investigative project, say to develop an algorithm, this
+section should present the algorithm itself and illustrate of its operation
+perhaps by means of an example or two. Technical details such as proofs of
+correctness and performance analysis should appear in the Implementation
+section.
+
+
+Implementation
+
+This section should describe the actual implementation but with a focus on
+the technical challenges rather than the mundane coding details. There no
+need to describe straightforward aspects in great detail or to quote large
+blocks of code, but any non-obvious aspects of the implementation should
+be explained. For example, a brief summary of the main data structures
+employed might be included and the role that each plays in the overall scheme
+of things.
+
+
+The objective is that a competent programmer should be able to understand how the software was constructed based only on your description of it.
+
+Do not give a blow by blow narrative account of your coding efforts, but it
+is appropriate to indicate any significant or unexpected technical challenges
+encountered along the way (flaky behaviour of third-party software, misleading or inadequate documentation and so on) and how they were resolved or overcome.
+
+Where the implementation is incomplete, you should state clearly what
+has and has not been done. It is appropriate to sketch how uncompleted
+elements of the the system might be implemented, as long as you are honest
+in describing the status of uncompleted work.

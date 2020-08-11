@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<h1>{{ _('Add Movies') }}</h1>
+
+<div class="col-md-4">
+    <p>Please enter an imdb id or a title and year</p>
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}
+

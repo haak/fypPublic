@@ -1,0 +1,183 @@
+mum
+1.
+5
+2.
+actor and director matter
+3.
+2nd set
+4.
+4
+5.
+4
+6.
+director and actor import , genre
+
+Dad:
+1.
+5
+2.
+2
+3.
+2nd set 
+4.
+4
+5.
+4
+6.
+genre. 
+
+
+
+isobel:
+
+1. 4
+2. yeah
+3. 2nd set
+4. 5
+5. 4
+6. 3 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LAUREN
+QUESTIONS:
+
+1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A:   Posters and titles are a 3/5 importance to me, in round 1 I had very little to go off of information wise so I chose at random until I got more information. If I had seen those posters/titles I would have either known the movie or judged more clearly if I would like it. In round 4, the ratings of the movies helped more than a title/poster could have however.
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: (I’m gonna be honest, I forgot about those rounds after I finished, so I didn’t actually notice much except that not every movie said the same thing every round. For instance one movie might say what production company it is after I’ve vetoed a movie, but the next movie might say what genre it is as opposed to saying the production company.)
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: I did notice that the round 4,5 and 6 had better recommendations for my taste, there weren’t any comedies and more crime/horror films appeared. So I preferred the second set of movies
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: 4, I tend to not go off of recommendation systems but this one was interesting to try out because I could explicitly say if I liked a movie or not.
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: 5, way more interesting and much more attuned to me.
+
+6. did you see any explanation types that were particularly interesting.
+A: I noticed a lot of movies mention the English language which was an unusual thing to mention in my opinion, the mention of what production company it was, was very helpful as I could take a guess whether I would like it or not.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TIM
+1. Sometimes, 5.
+2. Yes, they were different. (Seemed to be more useful).
+3. Not really, no. They both seemed random in choice of movies/explanations.
+4. 2 its current form. "Like this system", with some refinement it could be a 4.
+5. 4
+6. "Based on a novel (insert novel name here)"
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MLOC
+1. in some ways, yes, but it mostly helped me recognize movies I know. I don't think it affected my choice between movies I hadn't seen before.
+2. more features related to actors and producers; might have been more useful if I knew the actors, instead of choosing random ones
+
+3. didn't really notice a difference
+4. I'm bad with number ratings but yes, if I'd taken the time to input all the movies I'd seen. I haven't seen 150 movies, though. 4/5
+5. was fun to play with, felt less opaque and more understandable than a traditional recommender (you'll like this cos you liked this); sense of agency when eliminating options was nice. 4/5
+6. neighbour ratings were interesting (if I understood them right); probably hamstrung by the lack of users but I could see it being neat with more data
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+KIMI
+QUESTIONS:
+
+1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A:   Yes, I found that posters were extremely important in my decision making. I would say that they were the primary factor even, followed by title and genre. I would rate the presence of poster and titles to be 5/5 in terms of importance. 
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: Rounds 1 and 2 were based off of "movie attributes" like the runtime, genre, production house, etc whereas round 3 was based off of the cast, director, producer, etc. I think that was it.
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: The first set seemed to be more recent movies, which I personally preferred. This could have just been a coincidence too, not sure.
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: It wasnt bad, gives a variet of movies based on your profile. So yeah, it is a bit helpful. But is it better than, say, IMDB giving movie recommendations without you having to go through the process of elimination? I wouldnt say so. The process, albeit simple, still requires time. Something that doesnt require time is always better than something that does.
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: Interesting? Yes, it is interesting to me so I would rate it 3 or 4 in terms of interest.
+
+6. did you see any explanation types that were particularly interesting.
+A: The runtime was odd, but I can see that being useful. If someone prefers shorter movies, they are more likely to watch the shorter ones that are recommended. 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SHIVA
+1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A: Yes it affected the choosing of the movies. Payed more attention to the explainations.  5, I think posters and titles are a must when choosing movies. 
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: No
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: They were both pretty similar
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: 5
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: 5 
+
+6. did you see any explanation types that were particularly interesting.
+A: The Production Twentieth Century Fox Home Entertainment appears 4 times in your profile
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Victor
+1) yeah, 5/5
+2) yes, it focused more on who was involved in making the movie than the movie content
+3) yeah, the first set felt more high energy, I preferred the second set
+4) 4/5
+5) 4/5
+6) I liked seeing that a certain person directed or wrote the movie, and how many of their movies I would have rated highly, and I liked when the titles / posters were hidden since I chose something I probably would have thrown out straight away from the poster. I spent more time thinking if I might like to watch it
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+JULIA 
+1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A: Yes, I would be more willing to watch a movie with an actor I recognize on the front.   
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: No.
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: Yes, the same pool of options was given in round 1-3. Neighbour ratings instead or with descriptions were used. I prefer the initial descriptions, they give more of an idea on what the movie is about and allow me to form an opinion before I see the movie.
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: Yes, often spend a lot of time deciding what to watch, and having something tell me what to watch would save time.
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: Somewhat, since a smaller pool of choices is show, so easier to make a decision comapred to something like netflix, where at least 50 'recommended' options are shown
+
+6. did you see any explanation types that were particularly interesting.
+A: No.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SPTEHEN
+
+1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A:   Yes it was very important in choosing the movie score=5 
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: No just looked at posters and titles
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: Second set was better, not sure why the movies were the same for multiple rounds
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: 3
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: 4
+
+6. did you see any explanation types that were particularly interesting.
+A:Language stuff, country of origin and production company, didnt think about that stuff before
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LORCAN'1. In round 1 and 4 there were no titles or posters did this affect your choosing of a movies? if yes how important on a scale of 1-5 would you say posters and titles are?
+A: yes, posters and titles are about 5
+
+2. Did you notice anything different about the explanations in round 3 and 6 compared to other rounds.
+A: no, i was looking at the images, not the explanations 
+
+3. rounds 1,2,3 and rounds 4,5,6 had different movies. Did you notice a difference? was there a set that were better?
+A: rounds 1,2,3 had a better selection of movies 
+
+4. On a scale of 1-5 would you find a system like this helpful. 
+A: 1
+
+5. On a scale of 1-5 did you find this more interesting than a normal recommender.
+A: 3
+
+6. did you see any explanation types that were particularly interesting.
+A: no
